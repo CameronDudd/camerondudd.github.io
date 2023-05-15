@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/camerondudd.github.io/static/css/main.073c9b0a.css",
+    "main.js": "/camerondudd.github.io/static/js/main.53579267.js",
+    "static/js/787.e35d3838.chunk.js": "/camerondudd.github.io/static/js/787.e35d3838.chunk.js",
+    "static/media/logo.svg": "/camerondudd.github.io/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/camerondudd.github.io/index.html",
+    "main.073c9b0a.css.map": "/camerondudd.github.io/static/css/main.073c9b0a.css.map",
+    "main.53579267.js.map": "/camerondudd.github.io/static/js/main.53579267.js.map",
+    "787.e35d3838.chunk.js.map": "/camerondudd.github.io/static/js/787.e35d3838.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.53579267.js"
+  ]
+}
