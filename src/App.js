@@ -1,11 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-          <img src="https://www.codewars.com/users/SigmaiMu/badges/large" alt="CodeWars SVG"/>
+          <a href="https://www.codewars.com/users/CameronDudd">
+              <img src="https://www.codewars.com/users/CameronDudd/badges/large" alt="CodeWars SVG"/>
+          </a>
       </header>
       <body className="App-body">
       </body>
