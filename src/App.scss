@@ -1,0 +1,45 @@
+.App {
+  position: absolute;
+  background-color: #060909;
+  width: 100%;
+  height: 100%;
+
+  &__left {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+
+    &__aboutme {
+
+      &__button {
+        background-color: #b58887;
+        border-color: black;
+      }
+
+      &__socials {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        height: 100%;
+
+        &__typeracer {
+          width: 100%;
+          height: 100%;
+        }
+
+        &__codewars {
+          width: 100%;
+          height: 100%;
+        }
+
+      }
+
+    }
+
+  }
+
+  &__right {
+  }
+}
