@@ -1,31 +1,22 @@
-import { useState } from 'react';
-import { Drawer, Button } from 'antd';
-
-import { CodeWars, TypeRacer } from './Stats.js';
+import { Avatar } from 'antd';
+import ProfilePicture from "../assets/profile_picture.jpg"
 export function AboutMe() {
-
-    const [aboutMeOpen, setAboutMeOpen] = useState(false);
-
-        const showAboutMe = () => {
-            setAboutMeOpen(true);
-        };
-
-        const hideAboutMe = () => {
-            setAboutMeOpen(false);
-        };
-
     return (
         <div className="App__left__aboutme">
-            <Drawer placement="left"
-                    open={aboutMeOpen}
-                    onClose={hideAboutMe}
-                    closable={false}>
-                <div className="App__left__aboutme__socials">
-                    <TypeRacer />
-                    <CodeWars />
+            <div className="App__left__aboutme__header">
+                <Avatar alt="Cameron Dudd Headshot Image"
+                        src={ProfilePicture}
+                        shape="square"
+                        size={55}
+                        className="ProfilePicture">
+                </Avatar>
+                <div className="App__left__aboutme__header__text">
+                    <b>
+                        <p>Cameron Dudd</p>
+                        <p>Junior Software Engineer</p>
+                    </b>
                 </div>
-            </Drawer>
-            <Button onClick={showAboutMe} className="App__left__aboutme__button">About Me</Button>
+            </div>
         </div>
     );
 }
