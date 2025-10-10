@@ -105,3 +105,85 @@ export function cuboidMesh(
 
   return { vertices, edges, centroid };
 }
+
+export function pyramidMesh(
+  x: number,
+  y: number,
+  z: number,
+  w: number,
+  d: number,
+  h: number
+): Mesh3D {
+  const centroid: Vec3 = {
+    x: x + w / 2,
+    y: y + h / 2,
+    z: z + d / 2,
+  };
+  const vertices: Vec3[] = [
+    { x: x, y: y, z: z },
+    { x: x + w, y: y, z: z },
+    { x: x + w, y: y, z: z + d },
+    { x: x, y: y, z: z + d },
+    { x: x + w / 2, y: y + h, z: z + d / 2 },
+  ];
+  const edges: Edge[] = [
+    // Floor-face
+    { start: 0, end: 1 },
+    { start: 1, end: 2 },
+    { start: 2, end: 3 },
+    { start: 3, end: 0 },
+    // Peak-faces
+    { start: 0, end: 4 },
+    { start: 1, end: 4 },
+    { start: 2, end: 4 },
+    { start: 3, end: 4 },
+  ];
+  return { vertices, edges, centroid };
+}
+
+export function sphereMesh(
+  cx: number,
+  cy: number,
+  cz: number,
+  r: number,
+  n: number
+): Mesh3D {
+  const centroid: Vec3 = { x: cx, y: cy, z: cz };
+  const vertices: Vec3[] = [{ x: cx, y: cy + r, z: cz }];
+  const edges: Edge[] = [];
+  for (let latStep = 1; latStep < n; ++latStep) {
+    for (let lonStep = 0; lonStep < n; ++lonStep) {
+      const lat = Math.PI * (latStep / n);
+      const lon = 2 * Math.PI * (lonStep / n);
+      vertices.push({
+        x: cx + r * Math.sin(lat) * Math.cos(lon),
+        y: cy + r * Math.cos(lat),
+        z: cz + r * Math.sin(lat) * Math.sin(lon),
+      });
+
+      // Longitude edges
+      edges.push({
+        start: (latStep - 1) * n + lonStep + 1,
+        end: (latStep - 1) * n + ((lonStep + 1) % n) + 1,
+      });
+
+      // Latitude edges
+      if (latStep == 1) {
+        edges.push({ start: 0, end: lonStep + 1 });
+      } else {
+        edges.push({
+          start: (latStep - 2) * n + lonStep + 1,
+          end: (latStep - 1) * n + lonStep + 1,
+        });
+      }
+    }
+  }
+  vertices.push({ x: cx, y: cy - r, z: cz });
+  for (let i = 0; i < n; ++i) {
+    edges.push({
+      start: (n - 2) * n + i + 1,
+      end: vertices.length - 1,
+    });
+  }
+  return { vertices, edges, centroid };
+}
