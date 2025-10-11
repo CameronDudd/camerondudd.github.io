@@ -3,10 +3,12 @@ import type { Vec3 } from 'lib/Vec/vec';
 const TWO_PI = 2 * Math.PI;
 
 export type Edge = { start: number; end: number };
+export type Face = [number, number, number];
 
 export type Mesh3D = {
   vertices: Vec3[];
   edges: Edge[];
+  faces: Face[];
   centroid: Vec3;
 };
 
@@ -105,7 +107,28 @@ export function cuboidMesh(
     { start: 7, end: 4 },
   ];
 
-  return { vertices, edges, centroid };
+  const faces: Face[] = [
+    // Back face
+    [0, 3, 2],
+    [2, 1, 0],
+    // Left face
+    [4, 7, 3],
+    [3, 0, 4],
+    // Right face
+    [5, 6, 2],
+    [2, 1, 5],
+    // Top face
+    [7, 3, 2],
+    [2, 6, 7],
+    // Bottom face
+    [4, 0, 1],
+    [1, 5, 4],
+    // Front face
+    [4, 7, 6],
+    [6, 5, 4],
+  ];
+
+  return { vertices, edges, faces, centroid };
 }
 
 export function pyramidMesh(
@@ -140,7 +163,8 @@ export function pyramidMesh(
     { start: 2, end: 4 },
     { start: 3, end: 4 },
   ];
-  return { vertices, edges, centroid };
+  const faces: Face[] = [];
+  return { vertices, edges, faces, centroid };
 }
 
 export function sphereMesh(
@@ -153,6 +177,7 @@ export function sphereMesh(
   const centroid: Vec3 = { x: cx, y: cy, z: cz };
   const vertices: Vec3[] = [{ x: cx, y: cy + r, z: cz }];
   const edges: Edge[] = [];
+  const faces: Face[] = [];
   for (let latStep = 1; latStep < n; ++latStep) {
     for (let lonStep = 0; lonStep < n; ++lonStep) {
       const lat = Math.PI * (latStep / n);
@@ -187,7 +212,7 @@ export function sphereMesh(
       end: vertices.length - 1,
     });
   }
-  return { vertices, edges, centroid };
+  return { vertices, edges, faces, centroid };
 }
 
 export function torusMesh(
@@ -201,6 +226,7 @@ export function torusMesh(
   const centroid: Vec3 = { x: cx, y: cy, z: cz };
   const vertices: Vec3[] = [];
   const edges: Edge[] = [];
+  const faces: Face[] = [];
   for (let outer = 0; outer < n; ++outer) {
     for (let inner = 0; inner < n; ++inner) {
       const outerTheta = TWO_PI * (outer / n);
@@ -224,5 +250,5 @@ export function torusMesh(
       });
     }
   }
-  return { vertices, edges, centroid };
+  return { vertices, edges, faces, centroid };
 }
