@@ -34,6 +34,13 @@ export function triangleArea2(a: Vec2, b: Vec2, c: Vec2) {
   return dot2(ac, abPerp) / 2;
 }
 
+export function pointInTriangle2(p: Vec2, a: Vec2, b: Vec2, c: Vec2): boolean {
+  const areaABP = triangleArea2(a, b, p);
+  const areaBCP = triangleArea2(b, c, p);
+  const areaCAP = triangleArea2(c, a, p);
+  return areaABP >= 0 && areaBCP >= 0 && areaCAP >= 0;
+}
+
 export function add3(a: Vec3, b: Vec3): Vec3 {
   return { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z };
 }
