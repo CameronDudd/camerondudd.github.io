@@ -11,7 +11,7 @@ export function sub2(a: Vec2, b: Vec2): Vec2 {
 }
 
 export function dot2(a: Vec2, b: Vec2): number {
-  return a.x * b.x + a.y + b.y;
+  return a.x * b.x + a.y * b.y;
 }
 
 export function cross2(a: Vec2, b: Vec2): number {
@@ -41,6 +41,22 @@ export function pointInTriangle2(p: Vec2, a: Vec2, b: Vec2, c: Vec2): boolean {
   return areaABP >= 0 && areaBCP >= 0 && areaCAP >= 0;
 }
 
+export function barycentric2(
+  p: Vec2,
+  a: Vec2,
+  b: Vec2,
+  c: Vec2
+): [number, number, number] {
+  const ab = sub2(b, a);
+  const ac = sub2(c, a);
+  const ap = sub2(p, a);
+  const denominator = cross2(ab, ac);
+  const v = cross2(ap, ac) / denominator;
+  const w = cross2(ab, ap) / denominator;
+  const u = 1 - v - w;
+  return [u, v, w];
+}
+
 export function add3(a: Vec3, b: Vec3): Vec3 {
   return { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z };
 }
@@ -50,7 +66,7 @@ export function sub3(a: Vec3, b: Vec3): Vec3 {
 }
 
 export function dot3(a: Vec3, b: Vec3): number {
-  return a.x * b.x + a.y + b.y + a.z * b.z;
+  return a.x * b.x + a.y * b.y + a.z * b.z;
 }
 
 export function cross3(a: Vec3, b: Vec3): Vec3 {
