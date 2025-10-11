@@ -28,6 +28,12 @@ export function norm2(v: Vec2): Vec2 {
   return { x: v.x / len, y: v.y / len };
 }
 
+export function triangleArea2(a: Vec2, b: Vec2, c: Vec2) {
+  const ac = sub2(a, c);
+  const abPerp = perp2(sub2(b, a));
+  return dot2(ac, abPerp) / 2;
+}
+
 export function add3(a: Vec3, b: Vec3): Vec3 {
   return { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z };
 }
