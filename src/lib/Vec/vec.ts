@@ -18,6 +18,10 @@ export function cross2(a: Vec2, b: Vec2): number {
   return a.x * b.y - a.y * b.x;
 }
 
+export function perp2(v: Vec2): Vec2 {
+  return { x: v.y, y: -v.x };
+}
+
 export function norm2(v: Vec2): Vec2 {
   const len = Math.sqrt(dot2(v, v));
   if (len == 0) return { x: 0, y: 0 };
