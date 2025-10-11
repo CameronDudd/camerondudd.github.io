@@ -1,5 +1,7 @@
 import type { Vec3 } from 'lib/Vec/vec';
 
+const TWO_PI = 2 * Math.PI;
+
 export type Edge = { start: number; end: number };
 
 export type Mesh3D = {
@@ -154,7 +156,7 @@ export function sphereMesh(
   for (let latStep = 1; latStep < n; ++latStep) {
     for (let lonStep = 0; lonStep < n; ++lonStep) {
       const lat = Math.PI * (latStep / n);
-      const lon = 2 * Math.PI * (lonStep / n);
+      const lon = TWO_PI * (lonStep / n);
       vertices.push({
         x: cx + r * Math.sin(lat) * Math.cos(lon),
         y: cy + r * Math.cos(lat),
@@ -184,6 +186,43 @@ export function sphereMesh(
       start: (n - 2) * n + i + 1,
       end: vertices.length - 1,
     });
+  }
+  return { vertices, edges, centroid };
+}
+
+export function torusMesh(
+  cx: number,
+  cy: number,
+  cz: number,
+  r: number,
+  R: number,
+  n: number
+): Mesh3D {
+  const centroid: Vec3 = { x: cx, y: cy, z: cz };
+  const vertices: Vec3[] = [];
+  const edges: Edge[] = [];
+  for (let outer = 0; outer < n; ++outer) {
+    for (let inner = 0; inner < n; ++inner) {
+      const outerTheta = TWO_PI * (outer / n);
+      const innerTheta = TWO_PI * (inner / n);
+      vertices.push({
+        x: cx + (R + r * Math.cos(innerTheta)) * Math.cos(outerTheta),
+        y: cy + (R + r * Math.cos(innerTheta)) * Math.sin(outerTheta),
+        z: cz + r * Math.sin(innerTheta),
+      });
+
+      // inner circles
+      edges.push({
+        start: outer * n + inner,
+        end: outer * n + ((inner + 1) % n),
+      });
+
+      // outer lines
+      edges.push({
+        start: outer * n + inner,
+        end: ((outer + 1) % n) * n + inner,
+      });
+    }
   }
   return { vertices, edges, centroid };
 }

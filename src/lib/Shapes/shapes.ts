@@ -5,12 +5,13 @@ import {
   pyramidMesh,
   rollMesh3D,
   sphereMesh,
+  torusMesh,
   yawMesh3D,
 } from 'lib/Geometry/geometry';
 import { drawMesh3DOrthographic } from 'lib/Renderer/renderer';
 
 export class Scene {
-  private width: number = 500;
+  private width: number = 700;
   private height: number = 180;
   private ctx: CanvasRenderingContext2D;
   private meshes: Mesh3D[];
@@ -27,7 +28,8 @@ export class Scene {
     this.meshes = [
       cuboidMesh(40, 40, 0, 100, 100, 100),
       pyramidMesh(200, 40, 0, 100, 100, 100),
-      sphereMesh(400, 90, 0, 60, 12),
+      sphereMesh(400, 90, 0, 60, 30),
+      torusMesh(560, 100, 0, 18, 50, 30),
     ];
 
     this.animate = this.animate.bind(this);
