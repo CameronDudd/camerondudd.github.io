@@ -20,6 +20,7 @@ export function cross2(a: Vec2, b: Vec2): number {
 
 export function norm2(v: Vec2): Vec2 {
   const len = Math.sqrt(dot2(v, v));
+  if (len == 0) return { x: 0, y: 0 };
   return { x: v.x / len, y: v.y / len };
 }
 
@@ -45,5 +46,6 @@ export function cross3(a: Vec3, b: Vec3): Vec3 {
 
 export function norm3(v: Vec3): Vec3 {
   const len = Math.sqrt(dot3(v, v));
+  if (len == 0) return { x: 0, y: 0, z: 0 };
   return { x: v.x / len, y: v.y / len, z: v.z / len };
 }
