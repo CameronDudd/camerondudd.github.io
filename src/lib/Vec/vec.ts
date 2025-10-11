@@ -1,5 +1,27 @@
 export type Vec2 = { x: number; y: number };
+
 export type Vec3 = { x: number; y: number; z: number };
+
+export function add2(a: Vec2, b: Vec2): Vec2 {
+  return { x: a.x + b.x, y: a.y + b.y };
+}
+
+export function sub2(a: Vec2, b: Vec2): Vec2 {
+  return { x: a.x - b.x, y: a.y - b.y };
+}
+
+export function dot2(a: Vec2, b: Vec2): number {
+  return a.x * b.x + a.y + b.y;
+}
+
+export function cross2(a: Vec2, b: Vec2): number {
+  return a.x * b.y - a.y * b.x;
+}
+
+export function norm2(v: Vec2): Vec2 {
+  const len = Math.sqrt(dot2(v, v));
+  return { x: v.x / len, y: v.y / len };
+}
 
 export function add3(a: Vec3, b: Vec3): Vec3 {
   return { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z };
