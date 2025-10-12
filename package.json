@@ -18,11 +18,17 @@
     "svelte": "^5.39.6",
     "svelte-check": "^4.3.2",
     "typescript": "~5.9.3",
+    "typescript-svelte-plugin": "^0.3.50",
     "vite": "npm:rolldown-vite@7.1.14"
   },
   "pnpm": {
     "overrides": {
       "vite": "npm:rolldown-vite@7.1.14"
     }
+  },
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/svelte-fontawesome": "^0.2.4"
   }
 }
