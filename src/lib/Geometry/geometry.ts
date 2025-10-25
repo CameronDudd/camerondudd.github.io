@@ -67,27 +67,23 @@ export function yawMesh3D(mesh: Mesh3D, theta: number) {
 }
 
 export function cuboidMesh(
-  x: number,
-  y: number,
-  z: number,
+  cx: number,
+  cy: number,
+  cz: number,
   w: number,
   h: number,
   d: number
 ): Mesh3D {
-  const centroid: Vec3 = {
-    x: x + w / 2,
-    y: y + h / 2,
-    z: z + d / 2,
-  };
+  const centroid: Vec3 = { x: cx, y: cy, z: cz };
   const vertices: Vec3[] = [
-    { x: x, y: y, z: z },
-    { x: x + w, y: y, z: z },
-    { x: x + w, y: y + h, z: z },
-    { x: x, y: y + h, z: z },
-    { x: x, y: y, z: z + d },
-    { x: x + w, y: y, z: z + d },
-    { x: x + w, y: y + h, z: z + d },
-    { x: x, y: y + h, z: z + d },
+    { x: cx - w / 2, y: cy - h / 2, z: cz - d / 2 },
+    { x: cx + w / 2, y: cy - h / 2, z: cz - d / 2 },
+    { x: cx + w / 2, y: cy + h / 2, z: cz - d / 2 },
+    { x: cx - w / 2, y: cy + h / 2, z: cz - d / 2 },
+    { x: cx - w / 2, y: cy - h / 2, z: cz + d / 2 },
+    { x: cx + w / 2, y: cy - h / 2, z: cz + d / 2 },
+    { x: cx + w / 2, y: cy + h / 2, z: cz + d / 2 },
+    { x: cx - w / 2, y: cy + h / 2, z: cz + d / 2 },
   ];
   const edges: Edge[] = [
     // Back-face
@@ -132,24 +128,24 @@ export function cuboidMesh(
 }
 
 export function pyramidMesh(
-  x: number,
-  y: number,
-  z: number,
+  cx: number,
+  cy: number,
+  cz: number,
   w: number,
   d: number,
   h: number
 ): Mesh3D {
   const centroid: Vec3 = {
-    x: x + w / 2,
-    y: y + h / 2,
-    z: z + d / 2,
+    x: cx,
+    y: cy,
+    z: cz,
   };
   const vertices: Vec3[] = [
-    { x: x, y: y, z: z },
-    { x: x + w, y: y, z: z },
-    { x: x + w, y: y, z: z + d },
-    { x: x, y: y, z: z + d },
-    { x: x + w / 2, y: y + h, z: z + d / 2 },
+    { x: cx - w / 2, y: cy - h / 2, z: cz - d / 2 },
+    { x: cx + w / 2, y: cy - h / 2, z: cz - d / 2 },
+    { x: cx + w / 2, y: cy - h / 2, z: cz + d / 2 },
+    { x: cx - w / 2, y: cy - h / 2, z: cz + d / 2 },
+    { x: cx, y: cy + h / 2, z: cz },
   ];
   const edges: Edge[] = [
     // Floor-face

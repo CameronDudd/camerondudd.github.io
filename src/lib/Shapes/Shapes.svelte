@@ -1,12 +1,16 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import { Scene } from 'lib/Shapes/shapes';
+  import { Shape } from 'lib/Shapes/shapes';
+
+  const { shape, width, height } = $props();
 
   let canvas: HTMLCanvasElement;
-  let scene: Scene;
+  let scene: Shape;
 
   onMount(() => {
-    scene = new Scene(canvas);
+    canvas.width = width;
+    canvas.height = width;
+    scene = new Shape(shape, canvas);
     scene.animate();
   });
 
@@ -17,6 +21,6 @@
 
 <style>
   canvas {
-    background: #0000;
+    /* outline: green 1px solid; */
   }
 </style>

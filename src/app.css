@@ -1,16 +1,45 @@
 :root {
-  --bg-color: #242424;
+  /* https://github.com/sainnhe/gruvbox-material */
+  --bg-dim: #252423;
+  --bg-0: #32302F;
+  --bg-1: #3C3836;
+  --bg-2: #3C3836;
+  --bg-3: #504945;
+  --bg-4: #504945;
+  --bg-5: #665C54;
+  --bg-diff-red: #472322;
+  --bg-diff-green: #3D4220;
+  --bg-diff-blue: #0F3A42;
+  --bg-statusline-1: #3C3836;
+  --bg-statusline-2: #46413E;
+  --bg-statusline-3: #5B534D;
+  --bg-current-word: #45403D;
+  --bg-visual-red: #543937;
+  --bg-visual-green: #424A3E;
+  --bg-visual-blue: #404946;
+  --bg-visual-yellow: #574833;
+  --bg-visual-purple: #4B3E45;
+  --fg0: #D4BE98;
+  --fg1: #DDC7A1;
+  --red: #EA6962;
+  --green: #A9B665;
+  --blue: #7DAEA3;
+  --yellow: #D8A657;
+  --purple: #D3869B;
+  --orange: #E78A4E;
+  --aqua: #89B482;
+  --bg-red: #EA6962;
+  --bg-green: #A9B665;
+  --bg-yellow: #D8A657;
+  --grey0: #7C6F64;
+  --grey1: #928374;
+  --grey2: #A89984;
+
+  --border-radius: 8px;
+  --tile-bg: var(--bg-0);
+  --max-width: 300px;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: var(--bg-color);
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
