@@ -1,26 +1,26 @@
-name: Lint
-
-on:
-  push:
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install pnpm
-        run: npm install -g pnpm
-
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install modules
         run: pnpm install
 
-      - name: Svelt Check
+      - name: Svelte Check
         run: pnpm run check
 
-      - name: Lint with ESlint
+      - name: Lint with ESLint
         run: pnpm run lint
 
       - name: Check Formatting with Prettier
