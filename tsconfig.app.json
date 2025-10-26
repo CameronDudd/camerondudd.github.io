@@ -5,19 +5,14 @@
     "target": "ES2022",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "types": [
-      "svelte",
-      "vite/client"
-    ],
+    "types": ["svelte", "vite/client"],
     "noEmit": true,
     "allowJs": true,
     "checkJs": true,
     "moduleDetection": "force",
     "baseUrl": ".",
     "paths": {
-      "$lib/*": [
-        "src/lib/*"
-      ]
+      "$lib/*": ["src/lib/*"]
     },
     "plugins": [
       {
@@ -25,9 +20,5 @@
       }
     ]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.js",
-    "src/**/*.svelte"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"]
 }

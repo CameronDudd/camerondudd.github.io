@@ -1,17 +1,12 @@
-import type { Mesh3D } from 'lib/Geometry/geometry';
-import { barycentric2, cross3, dot3, norm3, sub3 } from 'lib/Vec/vec';
+import type { Mesh3D } from "lib/Geometry/geometry";
+import { barycentric2, cross3, dot3, norm3, sub3 } from "lib/Vec/vec";
 
 const SQRT3 = Math.sqrt(3);
 const RECIPROCAL_SQRT6 = 1 / Math.sqrt(6);
 
 type ColorRGBA = { r: number; g: number; b: number; a: number };
 
-export function drawPixel(
-  x: number,
-  y: number,
-  color: ColorRGBA,
-  imageData: ImageData
-) {
+export function drawPixel(x: number, y: number, color: ColorRGBA, imageData: ImageData) {
   const { width, height } = imageData;
   if (x < 0 || x >= width || y < 0 || y >= height) return;
   const i = (Math.floor(y) * width + Math.floor(x)) * 4;
@@ -21,11 +16,8 @@ export function drawPixel(
   imageData.data[i + 3] = color.a;
 }
 
-export function drawMesh3DOrthographic(
-  canvas: HTMLCanvasElement,
-  mesh: Mesh3D
-) {
-  const ctx = canvas.getContext('2d');
+export function drawMesh3DOrthographic(canvas: HTMLCanvasElement, mesh: Mesh3D) {
+  const ctx = canvas.getContext("2d");
   if (!ctx) return;
   ctx.beginPath();
   for (const { start, end } of mesh.edges) {
@@ -38,7 +30,7 @@ export function drawMesh3DOrthographic(
 }
 
 export function drawMesh3DIsometric(canvas: HTMLCanvasElement, mesh: Mesh3D) {
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
   if (!ctx) return;
   ctx.beginPath();
   for (const { start, end } of mesh.edges) {
@@ -54,21 +46,13 @@ export function drawMesh3DIsometric(canvas: HTMLCanvasElement, mesh: Mesh3D) {
   ctx.stroke();
 }
 
-export function drawFaces3DOrthographic(
-  canvas: HTMLCanvasElement,
-  mesh: Mesh3D
-) {
-  const ctx = canvas.getContext('2d');
+export function drawFaces3DOrthographic(canvas: HTMLCanvasElement, mesh: Mesh3D) {
+  const ctx = canvas.getContext("2d");
   if (!ctx) return;
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-  const zBuff: [number, number][][] = Array.from(
-    { length: canvas.height },
-    () =>
-      Array.from(
-        { length: canvas.width },
-        () => [0, -Infinity] as [number, number]
-      )
+  const zBuff: [number, number][][] = Array.from({ length: canvas.height }, () =>
+    Array.from({ length: canvas.width }, () => [0, -Infinity] as [number, number]),
   );
 
   const lightDir = norm3({ x: 0, y: 0, z: -1 });

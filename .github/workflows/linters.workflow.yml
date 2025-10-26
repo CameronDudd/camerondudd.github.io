@@ -1,0 +1,27 @@
+name: Lint
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install modules
+        run: pnpm install
+
+      - name: Svelt Check
+        run: pnpm run check
+
+      - name: Lint with ESlint
+        run: pnpm run lint
+
+      - name: Check Formatting with Prettier
+        run: pnpm run check-format
+
+      - name: Transpile Typescript
+        run: pnpm run typescript

@@ -1,4 +1,4 @@
-import type { Vec3 } from 'lib/Vec/vec';
+import type { Vec3 } from "lib/Vec/vec";
 
 const TWO_PI = 2 * Math.PI;
 
@@ -66,14 +66,7 @@ export function yawMesh3D(mesh: Mesh3D, theta: number) {
   }
 }
 
-export function cuboidMesh(
-  cx: number,
-  cy: number,
-  cz: number,
-  w: number,
-  h: number,
-  d: number
-): Mesh3D {
+export function cuboidMesh(cx: number, cy: number, cz: number, w: number, h: number, d: number): Mesh3D {
   const centroid: Vec3 = { x: cx, y: cy, z: cz };
   const vertices: Vec3[] = [
     { x: cx - w / 2, y: cy - h / 2, z: cz - d / 2 },
@@ -127,14 +120,7 @@ export function cuboidMesh(
   return { vertices, edges, faces, centroid };
 }
 
-export function pyramidMesh(
-  cx: number,
-  cy: number,
-  cz: number,
-  w: number,
-  d: number,
-  h: number
-): Mesh3D {
+export function pyramidMesh(cx: number, cy: number, cz: number, w: number, d: number, h: number): Mesh3D {
   const centroid: Vec3 = {
     x: cx,
     y: cy,
@@ -163,13 +149,7 @@ export function pyramidMesh(
   return { vertices, edges, faces, centroid };
 }
 
-export function sphereMesh(
-  cx: number,
-  cy: number,
-  cz: number,
-  r: number,
-  n: number
-): Mesh3D {
+export function sphereMesh(cx: number, cy: number, cz: number, r: number, n: number): Mesh3D {
   const centroid: Vec3 = { x: cx, y: cy, z: cz };
   const vertices: Vec3[] = [{ x: cx, y: cy + r, z: cz }];
   const edges: Edge[] = [];
@@ -211,14 +191,7 @@ export function sphereMesh(
   return { vertices, edges, faces, centroid };
 }
 
-export function torusMesh(
-  cx: number,
-  cy: number,
-  cz: number,
-  r: number,
-  R: number,
-  n: number
-): Mesh3D {
+export function torusMesh(cx: number, cy: number, cz: number, r: number, R: number, n: number): Mesh3D {
   const centroid: Vec3 = { x: cx, y: cy, z: cz };
   const vertices: Vec3[] = [];
   const edges: Edge[] = [];

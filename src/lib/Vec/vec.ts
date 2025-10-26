@@ -41,12 +41,7 @@ export function pointInTriangle2(p: Vec2, a: Vec2, b: Vec2, c: Vec2): boolean {
   return areaABP >= 0 && areaBCP >= 0 && areaCAP >= 0;
 }
 
-export function barycentric2(
-  p: Vec2,
-  a: Vec2,
-  b: Vec2,
-  c: Vec2
-): [number, number, number] {
+export function barycentric2(p: Vec2, a: Vec2, b: Vec2, c: Vec2): [number, number, number] {
   const ab = sub2(b, a);
   const ac = sub2(c, a);
   const ap = sub2(p, a);
