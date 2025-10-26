@@ -3,7 +3,7 @@
 </script>
 
 <div class="project-card">
-  <img src={image} alt="Project Image" />
+  <img src={image} alt="" />
   <div class="project-card-footer">
     <h3>{title}</h3>
     <p>{desc}</p>

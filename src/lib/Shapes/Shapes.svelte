@@ -18,9 +18,3 @@
 </script>
 
 <canvas bind:this={canvas}></canvas>
-
-<style>
-  canvas {
-    /* outline: green 1px solid; */
-  }
-</style>

@@ -10,9 +10,9 @@
     "allowJs": true,
     "checkJs": true,
     "moduleDetection": "force",
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "$lib/*": ["src/lib/*"]
+      "lib/*": ["lib/*"]
     },
     "plugins": [
       {
