@@ -1,10 +1,10 @@
 ## Statistics
 Language|files|blank|comment|code
 :-------|-------:|-------:|-------:|-------:
-TypeScript|5|56|30|426
-Svelte|2|6|0|24
-CSS|1|3|0|13
+TypeScript|5|57|30|448
+Svelte|3|17|1|99
+CSS|1|2|1|42
 --------|--------|--------|--------|--------
-SUM:|8|65|30|463
+SUM:|9|76|32|589
 
 [cloc](https://github.com/AlDanial/cloc)
