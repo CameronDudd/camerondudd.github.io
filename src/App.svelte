@@ -12,7 +12,7 @@
   <img src="/images/profile.png" alt="Cameron Dudd" class="profile-picture" />
   <h1>Cameron Dudd</h1>
   <h2>Software Engineer</h2>
-  <p class="manifesto">Less noise. More clarity</p>
+  <p class="manifesto">Simple tools</p>
   <div class="socials">
     {#each socials as { href, icon }}
       <a {href} target="_blank" rel="noopener noreferrer">
