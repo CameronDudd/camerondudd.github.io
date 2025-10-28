@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "lint": "eslint src",
-    "check-format": "prettier --check .",
+    "check-format": "prettier --check src",
     "format": "prettier --write .",
     "typescript": "tsc --noEmit"
   },
