@@ -90,17 +90,18 @@
 
   .dots {
     position: fixed;
-    top: 50%;
     right: 20px;
-    transform: translateY(-50%);
+    top: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 10px;
   }
 
   .dots button {
     width: 10px;
-    height: 10px;
+    aspect-ratio: 1;
     border: none;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
@@ -114,7 +115,7 @@
 
   .panel {
     scroll-snap-align: start;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     flex-direction: column;
     align-items: center;
