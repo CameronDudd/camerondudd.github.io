@@ -1,4 +1,5 @@
-import { Mesh3D, cuboidMesh, pitchMesh3D, pyramidMesh, rollMesh3D, sphereMesh, torusMesh, yawMesh3D } from 'lib/Geometry/geometry';
+import type { Mesh3D } from 'lib/Geometry/geometry';
+import { cuboidMesh, pitchMesh3D, pyramidMesh, rollMesh3D, sphereMesh, torusMesh, yawMesh3D } from 'lib/Geometry/geometry';
 import { drawMesh3DOrthographic } from 'lib/Renderer/renderer';
 
 export class Shape {
@@ -6,7 +7,7 @@ export class Shape {
   private height: number;
   private ctx: CanvasRenderingContext2D;
   private mesh: Mesh3D;
-  private animationId: number;
+  private animationId: number = 0;
 
   constructor(
     private shape: string,
@@ -24,7 +25,7 @@ export class Shape {
     if (!ctx) throw new Error('Failed to get ctx');
     this.ctx = ctx;
 
-    switch (shape) {
+    switch (this.shape) {
       case 'cube': {
         this.mesh = cuboidMesh(cx, cy, 0, halfMaxSize, halfMaxSize, halfMaxSize);
         break;
@@ -43,6 +44,8 @@ export class Shape {
         const R = (n * 0.9 * maxSize) / (2 * (n + 1));
         this.mesh = torusMesh(cx, cy, 0, r, R, 20);
       }
+      default:
+        throw new Error(`Unknown shape: ${this.shape}`);
     }
 
     this.animate = this.animate.bind(this);
