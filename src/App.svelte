@@ -38,6 +38,7 @@
       type="button"
       class:active={idx === activeSection}
       on:click={() => scrollToSection(idx)}
+      aria-label="goto section"
     ></button>
   {/each}
 </div>
