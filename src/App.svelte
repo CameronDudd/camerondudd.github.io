@@ -38,31 +38,44 @@
       type="button"
       class:active={idx === activeSection}
       on:click={() => scrollToSection(idx)}
-      aria-label="goto section"
-    ></button>
+      aria-label="goto section"></button>
   {/each}
 </div>
 
-<div id="scroll-container" class="scroll-container">
-  <section id="home" class="panel">
-    <img src="/images/profile.png" alt="Cameron Dudd" class="profile-picture" />
+<div
+  id="scroll-container"
+  class="scroll-container">
+  <section
+    id="home"
+    class="panel">
+    <img
+      src="/images/profile.png"
+      alt="Cameron Dudd"
+      class="profile-picture" />
     <h1>Cameron Dudd</h1>
     <h2>Software Engineer</h2>
     <div class="socials">
       {#each socials as { href, icon }}
-        <a {href} target="_blank" rel="noopener noreferrer">
+        <a
+          {href}
+          target="_blank"
+          rel="noopener noreferrer">
           <FontAwesomeIcon {icon} />
         </a>
       {/each}
     </div>
   </section>
 
-  <section id="tools" class="panel">
+  <section
+    id="tools"
+    class="panel">
     <h1>Tools</h1>
     <p>Coming Soon...</p>
   </section>
 
-  <section id="projects" class="panel">
+  <section
+    id="projects"
+    class="panel">
     <h1>Projects</h1>
     <p>Coming Soon...</p>
   </section>

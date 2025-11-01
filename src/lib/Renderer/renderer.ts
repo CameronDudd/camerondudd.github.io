@@ -1,5 +1,5 @@
-import type { Mesh3D } from "lib/Geometry/geometry";
-import { barycentric2, cross3, dot3, norm3, sub3 } from "lib/Vec/vec";
+import type { Mesh3D } from 'lib/Geometry/geometry';
+import { barycentric2, cross3, dot3, norm3, sub3 } from 'lib/Vec/vec';
 
 const SQRT3 = Math.sqrt(3);
 const RECIPROCAL_SQRT6 = 1 / Math.sqrt(6);
@@ -17,7 +17,7 @@ export function drawPixel(x: number, y: number, color: ColorRGBA, imageData: Ima
 }
 
 export function drawMesh3DOrthographic(canvas: HTMLCanvasElement, mesh: Mesh3D) {
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext('2d');
   if (!ctx) return;
   ctx.beginPath();
   for (const { start, end } of mesh.edges) {
@@ -30,7 +30,7 @@ export function drawMesh3DOrthographic(canvas: HTMLCanvasElement, mesh: Mesh3D) 
 }
 
 export function drawMesh3DIsometric(canvas: HTMLCanvasElement, mesh: Mesh3D) {
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext('2d');
   if (!ctx) return;
   ctx.beginPath();
   for (const { start, end } of mesh.edges) {
@@ -47,12 +47,12 @@ export function drawMesh3DIsometric(canvas: HTMLCanvasElement, mesh: Mesh3D) {
 }
 
 export function drawFaces3DOrthographic(canvas: HTMLCanvasElement, mesh: Mesh3D) {
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext('2d');
   if (!ctx) return;
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
   const zBuff: [number, number][][] = Array.from({ length: canvas.height }, () =>
-    Array.from({ length: canvas.width }, () => [0, -Infinity] as [number, number]),
+    Array.from({ length: canvas.width }, () => [0, -Infinity] as [number, number])
   );
 
   const lightDir = norm3({ x: 0, y: 0, z: -1 });

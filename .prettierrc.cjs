@@ -3,17 +3,17 @@ module.exports = {
   useTabs: false,
   singleQuote: true,
   semi: true,
-  trailingComma: "es5",
+  trailingComma: 'es5',
   bracketSameLine: true,
   printWidth: 160,
   singleAttributePerLine: true,
-  plugins: ["prettier-plugin-svelte"],
+  plugins: ['prettier-plugin-svelte'],
   overrides: [
     {
-      files: "*.svelte",
+      files: '*.svelte',
       options: {
-        parser: "svelte",
-        svelteSortOrder: "options-scripts-markup-styles",
+        parser: 'svelte',
+        svelteSortOrder: 'options-scripts-markup-styles',
         svelteStrictMode: true,
         svelteBracketNewLine: true,
         svelteAllowShorthand: true,

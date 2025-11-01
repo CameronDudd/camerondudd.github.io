@@ -1,4 +1,4 @@
-import type { Vec3 } from "lib/Vec/vec";
+import type { Vec3 } from 'lib/Vec/vec';
 
 const TWO_PI = 2 * Math.PI;
 
