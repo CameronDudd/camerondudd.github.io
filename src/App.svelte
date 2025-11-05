@@ -8,7 +8,13 @@
     { href: 'https://linkedin.com/in/camerondudd', icon: faLinkedin },
   ];
 
-  const sections = ['home', 'tools', 'projects'];
+  const projects = [
+    { name: 'dot-matrix', href: 'https://github.com/CameronDudd/dot-matrix', status: 'ongoing', statusColor: 'red' },
+    { name: 'elegoo-tumbller', href: 'https://github.com/CameronDudd/elegoo-tumbller', status: '', statusColor: 'yellow' },
+    { name: 'chess-engine', href: 'https://github.com/CameronDudd/chess-engine', status: '', statusColor: 'green' },
+  ];
+
+  const sections = ['home', 'projects'];
   let activeSection = 0;
 
   function scrollToSection(idx: number) {
@@ -67,17 +73,17 @@
   </section>
 
   <section
-    id="tools"
-    class="panel">
-    <h1>Tools</h1>
-    <p>Coming Soon...</p>
-  </section>
-
-  <section
     id="projects"
     class="panel">
     <h1>Projects</h1>
-    <p>Coming Soon...</p>
+    <div class="projects">
+      {#each projects as { name, href, statusColor }}
+        <p>
+          <a {href} target="_blank" rel="noopener noreferrer">{name}</a>
+          <span class="circle {statusColor}"></span>
+        </p>
+      {/each}
+    </div>
   </section>
 </div>
 
@@ -126,6 +132,10 @@
     background: #fff;
   }
 
+  .dots button:hover {
+    background: #fff;
+  }
+
   .panel {
     scroll-snap-align: start;
     height: 100svh;
@@ -142,6 +152,10 @@
     margin-bottom: 1rem;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   .socials a {
     color: var(--fg1);
     margin: 0 0.5rem;
@@ -150,6 +164,32 @@
 
   .socials a:hover {
     color: var(--red);
+  }
+
+  .projects p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .circle {
+    width: 10px;
+    aspect-ratio: 1;
+    display: inline-block;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+  .circle.red {
+    background: var(--red);
+  }
+
+  .circle.yellow {
+    background: var(--yellow);
+  }
+
+  .circle.green {
+    background: var(--green);
   }
 
   h1 {
