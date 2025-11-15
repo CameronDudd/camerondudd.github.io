@@ -9,9 +9,9 @@
   ];
 
   const projects = [
-    { name: 'dot-matrix', href: 'https://github.com/CameronDudd/dot-matrix', status: 'ongoing', statusColor: 'red' },
-    { name: 'elegoo-tumbller', href: 'https://github.com/CameronDudd/elegoo-tumbller', status: '', statusColor: 'yellow' },
-    { name: 'chess-engine', href: 'https://github.com/CameronDudd/chess-engine', status: '', statusColor: 'green' },
+    { name: 'dot-matrix', href: 'https://github.com/CameronDudd/dot-matrix' },
+    { name: 'elegoo-tumbller', href: 'https://github.com/CameronDudd/elegoo-tumbller' },
+    { name: 'chess-engine', href: 'https://github.com/CameronDudd/chess-engine' },
   ];
 
   const sections = ['home', 'projects'];
@@ -74,14 +74,18 @@
 
   <section
     id="projects"
-    class="panel">
+    class="panel projects-section">
     <h1>Projects</h1>
-    <div class="projects">
-      {#each projects as { name, href, statusColor }}
-        <p>
-          <a {href} target="_blank" rel="noopener noreferrer">{name}</a>
-          <span class="circle {statusColor}"></span>
-        </p>
+    <div class="project-list">
+      {#each projects as { name, href }}
+        <a
+          class="project-item"
+          {href}
+          target="_blank"
+          rel="noopener noreferrer">
+          <span class="project-name">{name}</span>
+          <span class="project-arrow">-></span>
+        </a>
       {/each}
     </div>
   </section>
@@ -166,30 +170,58 @@
     color: var(--red);
   }
 
-  .projects p {
-    display: flex;
-    justify-content: space-between;
+  .projects-section {
+    padding: 2rem 1.5rem;
     align-items: center;
   }
 
-  .circle {
-    width: 10px;
-    aspect-ratio: 1;
-    display: inline-block;
-    border-radius: 50%;
-    background: #fff;
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: min(500px, 90vw);
   }
 
-  .circle.red {
-    background: var(--red);
+  .project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    transition:
+      background 0.2s,
+      transform 0.2s;
+    text-decoration: none;
+    color: var(--fg1);
   }
 
-  .circle.yellow {
-    background: var(--yellow);
+  .project-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(4px);
   }
 
-  .circle.green {
-    background: var(--green);
+  .project-arrow {
+    opacity: 0.5;
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+  }
+
+  .project-item:hover .project-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  #projects h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    color: var(--purple);
+    align-self: center;
   }
 
   h1 {
