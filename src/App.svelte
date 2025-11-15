@@ -8,7 +8,13 @@
     { href: 'https://linkedin.com/in/camerondudd', icon: faLinkedin },
   ];
 
-  const sections = ['home', 'tools', 'projects'];
+  const projects = [
+    { name: 'dot-matrix', href: 'https://github.com/CameronDudd/dot-matrix' },
+    { name: 'elegoo-tumbller', href: 'https://github.com/CameronDudd/elegoo-tumbller' },
+    { name: 'chess-engine', href: 'https://github.com/CameronDudd/chess-engine' },
+  ];
+
+  const sections = ['home', 'projects'];
   let activeSection = 0;
 
   function scrollToSection(idx: number) {
@@ -67,17 +73,21 @@
   </section>
 
   <section
-    id="tools"
-    class="panel">
-    <h1>Tools</h1>
-    <p>Coming Soon...</p>
-  </section>
-
-  <section
     id="projects"
-    class="panel">
+    class="panel projects-section">
     <h1>Projects</h1>
-    <p>Coming Soon...</p>
+    <div class="project-list">
+      {#each projects as { name, href }}
+        <a
+          class="project-item"
+          {href}
+          target="_blank"
+          rel="noopener noreferrer">
+          <span class="project-name">{name}</span>
+          <span class="project-arrow">-></span>
+        </a>
+      {/each}
+    </div>
   </section>
 </div>
 
@@ -126,6 +136,10 @@
     background: #fff;
   }
 
+  .dots button:hover {
+    background: #fff;
+  }
+
   .panel {
     scroll-snap-align: start;
     height: 100svh;
@@ -142,6 +156,10 @@
     margin-bottom: 1rem;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   .socials a {
     color: var(--fg1);
     margin: 0 0.5rem;
@@ -150,6 +168,60 @@
 
   .socials a:hover {
     color: var(--red);
+  }
+
+  .projects-section {
+    padding: 2rem 1.5rem;
+    align-items: center;
+  }
+
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: min(500px, 90vw);
+  }
+
+  .project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    transition:
+      background 0.2s,
+      transform 0.2s;
+    text-decoration: none;
+    color: var(--fg1);
+  }
+
+  .project-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(4px);
+  }
+
+  .project-arrow {
+    opacity: 0.5;
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+  }
+
+  .project-item:hover .project-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  #projects h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    color: var(--purple);
+    align-self: center;
   }
 
   h1 {
